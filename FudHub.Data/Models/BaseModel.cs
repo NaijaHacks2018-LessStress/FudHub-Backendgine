@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FudHub
+namespace FudHub.Data.Models
 {
-    public class Class1
+    public abstract class BaseModel
     {
+        public int Total { get; set; }
     }
 }

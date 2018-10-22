@@ -1,0 +1,47 @@
+[
+  {
+    "ID": 1,
+    "Username": "jamie",
+    "Name": "Jamie Spencer",
+    "EmailAddress": "jamie.spencer@gmail.com",
+    "MobileNo1": "07052442223",
+    "MobileNo2": "",
+    "State": "Delta",
+    "LGA": "Uvwie",
+    "Location": "Warri",
+    "Bio": "Garri and starch producer",
+    "Status": 1,
+    "Datestamp": "0001-01-01T00:00:00",
+    "Total": 0
+  },
+  {
+    "ID": 2,
+    "Username": "princetegaton",
+    "Name": "Prince Tegaton",
+    "EmailAddress": "princetegaton@gmail.com",
+    "MobileNo1": "07052442223",
+    "MobileNo2": "",
+    "State": "Delta",
+    "LGA": "Uvwie",
+    "Location": "Warri",
+    "Bio": "Garri and starch producer",
+    "Status": 1,
+    "Datestamp": "0001-01-01T00:00:00",
+    "Total": 0
+  },
+  {
+    "ID": 3,
+    "Username": "will",
+    "Name": "Wilson",
+    "EmailAddress": "",
+    "MobileNo1": "09099999944",
+    "MobileNo2": "09099999944",
+    "State": "Delta",
+    "LGA": "Ughelli North",
+    "Location": "Ughelli",
+    "Bio": "Farmer",
+    "Status": 1,
+    "Datestamp": "2018-10-22T07:32:38.0452906Z",
+    "Total": 0
+  }
+]
