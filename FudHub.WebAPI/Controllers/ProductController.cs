@@ -16,11 +16,11 @@ namespace FudHub.WebAPI.Controllers
     {
         [HttpGet]
         [Route("getproduct/{id}")]
-        public HttpResponseMessage GetProduct(int ID)
+        public HttpResponseMessage GetProduct(int id)
         {
             try
             {
-                var rsp = new ProductManager().Get(ID);
+                var rsp = new ProductManager().Get(id);
                 var r = new ApiResult<Product>
                 {
                     ResponseCode = ResponseCode.Success,

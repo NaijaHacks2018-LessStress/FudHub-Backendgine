@@ -15,9 +15,9 @@ namespace FudHub.Engine.Logics
             var obj = MockUtility<Product>.GetList();
 
             if (!string.IsNullOrEmpty(keyword))
-                obj = obj.Where(p => p.Title.Contains(keyword) || p.Title.ToLower()==keyword.ToLower() || p.Description.Contains(keyword)).ToList();
+                obj = obj.Where(p => p.Title.Contains(keyword) || p.Title.ToLower() == keyword.ToLower() || p.Description.Contains(keyword)).ToList();
 
-            return obj ?? new List<Product>();
+            return obj;
         }
 
         public Product Get(int ID)
@@ -52,8 +52,7 @@ namespace FudHub.Engine.Logics
                 else if (product.Amount == 0)
                     return (false, "You've not specified product amount");
 
-
-                product.ID = obj.Max(p => p.ID) + 1;
+                product.ID = obj.Count > 0 ? obj.Max(p => p.ID) + 1 : 1;
                 product.Status = Data.ProductStatus.Active;
                 product.Datestamp = AppUtility.UTC();
 

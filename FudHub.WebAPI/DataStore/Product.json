@@ -1,0 +1,40 @@
+[
+  {
+    "ID": 1,
+    "Category": {
+      "ID": 1,
+      "Name": null,
+      "Description": null
+    },
+    "Title": "Yellow Garri",
+    "Description": "Yellow garri with good starch",
+    "Qty": 10,
+    "Amount": 4000.0,
+    "MeasurementUnit": "bag",
+    "SellerID": "07052442223",
+    "State": "Delta",
+    "LGA": "Warri",
+    "Location": "Warri",
+    "Status": 1,
+    "Datestamp": "2018-10-22T20:07:11.6899998Z"
+  },
+  {
+    "ID": 2,
+    "Category": {
+      "ID": 1,
+      "Name": null,
+      "Description": null
+    },
+    "Title": "White Garri",
+    "Description": "White garri with good starch",
+    "Qty": 10,
+    "Amount": 4000.0,
+    "MeasurementUnit": "bag",
+    "SellerID": "07052442223",
+    "State": "Delta",
+    "LGA": "Warri",
+    "Location": "Warri",
+    "Status": 1,
+    "Datestamp": "2018-10-22T20:07:24.455223Z"
+  }
+]

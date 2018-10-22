@@ -13,7 +13,7 @@ namespace FudHub.Engine.Logics
         public List<Category> Load()
         {
             var obj = MockUtility<Category>.GetList();
-            return obj ?? new List<Category>();
+            return obj;
         }
 
         public Category Get(int id)
@@ -31,7 +31,7 @@ namespace FudHub.Engine.Logics
                 if (obj.Any(c => c.Name.ToLower() == category.Name.ToLower()))
                     return (false, "Category already exist");
 
-                category.ID = obj.Max(c => c.ID) + 1;
+                category.ID = obj.Count > 0 ? obj.Max(p => p.ID) + 1 : 1;
                 obj.Add(category);
                 var r = MockUtility<Category>.Save(obj);
                 return (r, r ? "New Category has been added" : "Failed to add category at this time, pls try again!");

@@ -11,8 +11,7 @@
     "Location": "Warri",
     "Bio": "Garri and starch producer",
     "Status": 1,
-    "Datestamp": "0001-01-01T00:00:00",
-    "Total": 0
+    "Datestamp": "0001-01-01T00:00:00"
   },
   {
     "ID": 2,
@@ -26,8 +25,7 @@
     "Location": "Warri",
     "Bio": "Garri and starch producer",
     "Status": 1,
-    "Datestamp": "0001-01-01T00:00:00",
-    "Total": 0
+    "Datestamp": "0001-01-01T00:00:00"
   },
   {
     "ID": 3,
@@ -41,7 +39,6 @@
     "Location": "Ughelli",
     "Bio": "Farmer",
     "Status": 1,
-    "Datestamp": "2018-10-22T07:32:38.0452906Z",
-    "Total": 0
+    "Datestamp": "2018-10-22T07:32:38.0452906Z"
   }
 ]

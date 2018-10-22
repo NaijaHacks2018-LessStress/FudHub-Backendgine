@@ -49,6 +49,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Seller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ViewModels.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,11 +9,10 @@ namespace FudHub.Data.Models
     public class Seller : BaseModel
     {
         public int ID { get; set; }
-        public string Username { get; set; }
         public string Name { get; set; }
-        public string EmailAddress { get; set; }
         public string MobileNo1 { get; set; }
         public string MobileNo2 { get; set; }
+        public string EmailAddress { get; set; }
         public string State { get; set; }
         public string LGA { get; set; }
         public string Location { get; set; }

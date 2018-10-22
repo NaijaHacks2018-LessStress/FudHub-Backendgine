@@ -165,6 +165,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -208,6 +209,8 @@
     <Content Include="DataStore\Category.json" />
     <Content Include="DataStore\Product.json" />
     <Content Include="DataStore\Seller.json" />
+    <Content Include="DataStore\Order.json" />
+    <Content Include="DataStore\OrderBatch.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

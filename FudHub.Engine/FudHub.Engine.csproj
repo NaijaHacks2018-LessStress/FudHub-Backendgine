@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logics\CategoryManager.cs" />
+    <Compile Include="Logics\OrderBatchManager.cs" />
     <Compile Include="Logics\OrderManager.cs" />
     <Compile Include="Logics\ProductManager.cs" />
     <Compile Include="Logics\SellerManager.cs" />
@@ -55,9 +56,7 @@
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\MockUtility.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataStore\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FudHub.Data\FudHub.Data.csproj">
       <Project>{F7F4EC2D-7B43-4799-AC83-423D85F0F691}</Project>

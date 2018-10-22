@@ -15,7 +15,11 @@ namespace FudHub.Engine.Utils
             string _file = AppDomain.CurrentDomain.BaseDirectory + $@"\DataStore\{typeof(T).Name.ToString()}.json";
             string data = JsonConvert.SerializeObject(obj);
             if (!File.Exists(_file)) File.Create(_file);
-            File.WriteAllText(_file, data);
+            using (var s = new StreamWriter(_file)){
+                s.WriteLine(data);
+                s.Flush();
+            }
+            //File.WriteAllText(_file, data);
             return true;
         }
 
@@ -23,8 +27,13 @@ namespace FudHub.Engine.Utils
         {
             string _file = AppDomain.CurrentDomain.BaseDirectory + $@"\DataStore\{typeof(T).Name.ToString()}.json";
             if (!File.Exists(_file)) File.Create(_file);
-            string acc = File.ReadAllText(_file);
-            return acc;
+            string content = "";
+            using (var r = new StreamReader(_file))
+            {
+                content = r.ReadToEnd();
+            }
+            //string acc = File.ReadAllText(_file);
+            return content;
         }
 
         public static T GetObject()
@@ -36,7 +45,7 @@ namespace FudHub.Engine.Utils
         public static List<T> GetList()
         {
             var l = JsonConvert.DeserializeObject<List<T>>(GetContent());
-            return l;
+            return l ?? new List<T>();
         }
     }
 }

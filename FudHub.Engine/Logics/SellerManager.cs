@@ -15,14 +15,20 @@ namespace FudHub.Engine.Logics
             var obj = MockUtility<Seller>.GetList();
 
             if (!string.IsNullOrEmpty(keyword))
-                obj = obj.Where(s => s.Username.Contains(keyword) || s.Name.Contains(keyword) || s.Name.ToLower() == keyword.ToLower()).ToList();
+                obj = obj.Where(s => s.Name.Contains(keyword) || s.Name.ToLower() == keyword.ToLower()).ToList();
 
             return obj ?? new List<Seller>();
         }
 
-        public Seller Get(string usernameOrEmail)
+        public Seller Get(int ID)
         {
-            var obj = Load().FirstOrDefault(s => s.Username == usernameOrEmail || s.EmailAddress == usernameOrEmail);
+            var obj = Load().FirstOrDefault(s => s.ID == ID);
+            return obj;
+        }
+
+        public Seller Get(string mobileNoOrEmail)
+        {
+            var obj = Load().FirstOrDefault(s => s.MobileNo1 == mobileNoOrEmail || s.EmailAddress == mobileNoOrEmail);
             return obj;
         }
 
@@ -34,13 +40,12 @@ namespace FudHub.Engine.Logics
 
                 if (string.IsNullOrEmpty(seller.Name))
                     return (false, $"Pls provide your name");
-
-                if (string.IsNullOrEmpty(seller.MobileNo1) && string.IsNullOrEmpty(seller.MobileNo2))
+                else if (string.IsNullOrEmpty(seller.MobileNo1) && string.IsNullOrEmpty(seller.MobileNo2))
                     return (false, $"Pls provide a valid contact number");
 
-                if (obj.Any(s => s.Username == seller.Username))
-                    return (false, "Username already exist! Please try with another");
-                else if (obj.Any(s => s.EmailAddress == seller.EmailAddress))
+                //if (obj.Any(s => s.Username == seller.Username))
+                //    return (false, "Username already exist! Please try with another");
+                if (obj.Any(s => s.EmailAddress == seller.EmailAddress))
                     return (false, "Email address has already been used");
                 else if (obj.Any(s => s.MobileNo1 == seller.MobileNo1 || s.MobileNo1 == seller.MobileNo2 ||
                                        s.MobileNo2 == seller.MobileNo2 || s.MobileNo2 == seller.MobileNo2))
@@ -48,11 +53,10 @@ namespace FudHub.Engine.Logics
 
                 if (string.IsNullOrEmpty(seller.State) || string.IsNullOrEmpty(seller.LGA) || string.IsNullOrEmpty(seller.Location))
                     return (false, $"Pls enter your state, local govt. area and location");
-
-
+                
                 if (string.IsNullOrEmpty(seller.MobileNo1) && !string.IsNullOrEmpty(seller.MobileNo2))
                     seller.MobileNo1 = seller.MobileNo2;
-                seller.ID = obj.Max(s => s.ID) + 1;
+                seller.ID = obj.Count > 0 ? obj.Max(p => p.ID) + 1 : 1;
                 seller.Status = Data.SellerStatus.Active;
                 seller.Datestamp = AppUtility.UTC();
 

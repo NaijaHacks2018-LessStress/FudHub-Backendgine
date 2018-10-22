@@ -8,6 +8,6 @@ namespace FudHub.Data.Models
 {
     public abstract class BaseModel
     {
-        public int Total { get; set; }
+        //public int Total { get; set; }
     }
 }

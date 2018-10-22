@@ -18,7 +18,7 @@ namespace FudHub.Data
     {
         Complete = 1,
         Pending = 2,
-        Removed = 3
+        Cancelled = 3
     }
 
     public enum SellerStatus

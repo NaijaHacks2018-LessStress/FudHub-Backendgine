@@ -1,4 +1,5 @@
 ﻿using FudHub.Data.Models;
+using FudHub.Data.ViewModels;
 using FudHub.Engine.Logics;
 using FudHub.WebAPI.Utils;
 using System;
@@ -11,20 +12,20 @@ using System.Web.Http;
 
 namespace FudHub.WebAPI.Controllers
 {
-    [RoutePrefix("api/seller")]
-    public class SellerController : BaseApiController
+    [RoutePrefix("api/order")]
+    public class OrderController : BaseApiController
     {
         [HttpGet]
-        [Route("getprofile/{mobileOrEmail}")]
-        public HttpResponseMessage GetProfile(string mobileOrEmail)
+        [Route("cancel/{id}")]
+        public HttpResponseMessage Cancel(int id)
         {
             try
             {
-                var rsp = new SellerManager().Get(mobileOrEmail);
-                var r = new ApiResult<Seller>
+                var rsp = new OrderManager().Cancel(id);
+                var r = new ApiResult<bool>
                 {
                     ResponseCode = ResponseCode.Success,
-                    ResponseMessage = (rsp != null) ? "Seller profile has been loaded" : "Seller profile not found",
+                    ResponseMessage = rsp ? $"Order #{id} has been cancelled" : "Could not cancel order",
                     Data = rsp
                 };
 
@@ -37,17 +38,17 @@ namespace FudHub.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("getallbylocation")]
-        public HttpResponseMessage Load(string state = null, string lga = null, string location = null)
+        [Route("getorder/{id}")]
+        public HttpResponseMessage GetOrder(int id)
         {
             try
             {
-                var rsp = new SellerManager().Load(state, lga); //(state, lga, location);
-                var r = new ApiResult<IEnumerable<Seller>>
+                var rsp = new OrderManager().Get(id);
+                var r = new ApiResult<OrderData>
                 {
                     ResponseCode = ResponseCode.Success,
-                    ResponseMessage = (rsp.Count() > 0) ? "Sellers has been loaded" : "No seller found",
-                    Data = rsp
+                    ResponseMessage = (rsp.Item1 != null) ? "Order details has been loaded" : "Order not found",
+                    Data = rsp.Item1
                 };
 
                 return Request.CreateResponse(r);
@@ -64,11 +65,11 @@ namespace FudHub.WebAPI.Controllers
         {
             try
             {
-                var rsp = new SellerManager().Load(keyword, null, pageIndex, pageSize);
-                var r = new ApiResult<IEnumerable<Seller>>
+                var rsp = new OrderManager().Load(keyword, null, pageIndex, pageSize);
+                var r = new ApiResult<IEnumerable<Order>>
                 {
                     ResponseCode = ResponseCode.Success,
-                    ResponseMessage = (rsp.Count() > 0) ? "Sellers has been loaded" : "No seller found",
+                    ResponseMessage = (rsp.Count() > 0) ? "Order has been loaded" : "No order found",
                     Data = rsp
                 };
 
@@ -82,11 +83,11 @@ namespace FudHub.WebAPI.Controllers
 
         [HttpPost]
         [Route("add")]
-        public HttpResponseMessage Add(Seller seller)
+        public HttpResponseMessage Add(Cart cart)
         {
             try
             {
-                var rsp = new SellerManager().Add(seller);
+                var rsp = new OrderManager().Add(cart);
                 var r = new ApiResult<bool>
                 {
                     ResponseCode = ResponseCode.Success,
