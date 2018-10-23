@@ -57,21 +57,15 @@ namespace FudHub.WebAPI.Controllers
         //        return CreateErrorResponse(ex);
         //    }
         //}
-
-        /// <summary>
-        /// Get a list of all products, supply keyword to apply filter, use pageIndex and pageSize for pagination
-        /// </summary>
-        /// <param name="keyword"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
-        /// <returns>Boolean</returns>
+        
         [HttpGet]
         [Route("getall")]
         public HttpResponseMessage Load(string keyword = null, int pageIndex = 1, int pageSize = 20)
         {
             try
             {
-                var rsp = new ProductManager().Load(keyword, null, pageIndex, pageSize);
+                AppUtility.Log($"Get all products [{keyword},{pageIndex},{pageSize}]", nameof(ProductController), nameof(Load));
+                var rsp = new ProductManager().Load(keyword, null, pageIndex, pageSize).OrderByDescending(p => p.ID);
                 var r = new ApiResult<IEnumerable<Product>>
                 {
                     ResponseCode = ResponseCode.Success,

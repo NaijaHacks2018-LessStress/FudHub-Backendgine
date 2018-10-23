@@ -14,7 +14,7 @@ namespace FudHub.WebAPI.Controllers
         {
             ApiResult<string> result = new ApiResult<string>();
             result.ResponseCode = 0;
-            //LogError(ex.Message);
+            AppUtility.LogEx(ex.Message);
 
 #if DEBUG
             result.ResponseMessage = ex.Message;

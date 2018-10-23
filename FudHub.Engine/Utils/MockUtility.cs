@@ -10,12 +10,13 @@ namespace FudHub.Engine.Utils
 {
     public class MockUtility<T>
     {
-        public static bool Save( object obj)
+        public static bool Save(object obj)
         {
             string _file = AppDomain.CurrentDomain.BaseDirectory + $@"\DataStore\{typeof(T).Name.ToString()}.json";
             string data = JsonConvert.SerializeObject(obj);
-            if (!File.Exists(_file)) File.Create(_file);
-            using (var s = new StreamWriter(_file)){
+            var fs = new FileStream(_file, FileMode.Create);
+            using (var s = new StreamWriter(fs))
+            {
                 s.WriteLine(data);
                 s.Flush();
             }
@@ -26,9 +27,9 @@ namespace FudHub.Engine.Utils
         public static string GetContent()
         {
             string _file = AppDomain.CurrentDomain.BaseDirectory + $@"\DataStore\{typeof(T).Name.ToString()}.json";
-            if (!File.Exists(_file)) File.Create(_file);
+            var fs = new FileStream(_file, FileMode.Open, FileAccess.Read);
             string content = "";
-            using (var r = new StreamReader(_file))
+            using (var r = new StreamReader(fs))
             {
                 content = r.ReadToEnd();
             }
